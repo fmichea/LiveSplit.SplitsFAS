@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace LiveSplit.UI.Components
@@ -58,6 +59,9 @@ namespace LiveSplit.UI.Components
         public float MinimumHeight { get; set; }
 
         public IDictionary<string, Action> ContextMenuControls => null;
+
+        private Regex FASItemFmt1Regex = new Regex(@"AS:\[[\w\d,=-]+\]");
+        private Regex FASItemFmt2Regex = new Regex(@"AS:\([\w\d,=-]+\)");
 
         public SplitComponent(SplitsSettings settings, IEnumerable<ColumnData> columnsList)
         {
@@ -329,7 +333,16 @@ namespace LiveSplit.UI.Components
                 else if (NameLabel.AlternateText != null && NameLabel.AlternateText.Any())
                     NameLabel.AlternateText.Clear();
 
-                NameLabel.Text = Split.Name;
+                // We will display the splits without the sub-splits information, or auto splitter instructions.
+                var cleanSplitName = Split.Name;
+
+                // Remove all auto-splitter instructions from the name of the split that will be displayed.
+                cleanSplitName = FASItemFmt1Regex.Replace(cleanSplitName, "");
+                cleanSplitName = FASItemFmt2Regex.Replace(cleanSplitName, "");
+                cleanSplitName = cleanSplitName.Trim();
+
+                // Use clean split name as display name.
+                NameLabel.Text = cleanSplitName;
 
                 var splitIndex = state.Run.IndexOf(Split);
                 if (splitIndex < state.CurrentSplitIndex)

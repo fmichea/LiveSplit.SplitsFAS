@@ -39,7 +39,7 @@ namespace LiveSplit.UI.Components
 
         protected IEnumerable<ColumnData> ColumnsList => Settings.ColumnsList.Select(x => x.Data);
 
-        public string ComponentName => "Splits";
+        public string ComponentName => "SplitsFAS";
 
         public float VerticalHeight => InternalComponent.VerticalHeight;
 
@@ -111,7 +111,7 @@ namespace LiveSplit.UI.Components
                 var splitComponent = new SplitComponent(Settings, ColumnsList);
                 Components.Add(splitComponent);
                 if (i < visualSplitCount - 1 || i == (Settings.LockLastSplit ? totalSplits - 1 : visualSplitCount - 1))
-                    SplitComponents.Add(splitComponent);                   
+                    SplitComponents.Add(splitComponent);
 
                 if (Settings.ShowThinSeparators && i < totalSplits - 2)
                     Components.Add(new ThinSeparatorComponent());
@@ -134,7 +134,7 @@ namespace LiveSplit.UI.Components
 
             var previousSplitCount = visualSplitCount;
             visualSplitCount = Math.Min(state.Run.Count, Settings.VisualSplitCount);
-            if (previousSplitCount != visualSplitCount 
+            if (previousSplitCount != visualSplitCount
                 || (Settings.ShowBlankSplits && settingsSplitCount != Settings.VisualSplitCount)
                 || Settings.ShowColumnLabels != PreviousShowLabels
                 || (Settings.ShowColumnLabels && state.Layout.Mode != OldLayoutMode))

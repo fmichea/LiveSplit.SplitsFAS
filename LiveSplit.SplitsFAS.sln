@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AF654A96-AAD4-46B7-9928-34D0A66574DE}"
+Project("{8F196090-A47E-41E0-98ED-67A2B9D9E4B4 }") = "src", "src", "{AF654A96-AAD4-46B7-9928-34D0A66574DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveSplit.Splits", "src\LiveSplit.Splits\LiveSplit.Splits.csproj", "{EF869057-A3BB-4431-87C4-EFDBF824A328}"
+Project("{F8018706-2C0E-4515-A8CE-0B7FA99CDF07}") = "LiveSplit.SplitsFAS", "src\LiveSplit.Splits\LiveSplit.SplitsFAS.csproj", "{EF869057-A3BB-4431-87C4-EFDBF824A328}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
